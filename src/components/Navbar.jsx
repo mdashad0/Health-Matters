@@ -53,7 +53,7 @@ export default function Navbar() {
             <Link to="/" className="flex items-center gap-3.5 group focus:outline-none shrink-0">
               {/* Emblem / Logo Icon */}
               <div className="relative">
-                <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-700 via-brand-600 to-teal-500 flex items-center justify-center text-white shadow-md shadow-brand-500/20 group-hover:scale-105 transition-transform duration-300">
+                <div className="w-12 h-12 rounded-2xl bg-[#672c1c] flex items-center justify-center text-white shadow-md shadow-[#672c1c]/30 group-hover:scale-105 transition-transform duration-300">
                   <HeartPulse className="w-6 h-6 animate-pulse-slow" />
                 </div>
                 <div className="absolute -bottom-1 -right-1 bg-amber-500 text-white p-1 rounded-full shadow-xs border-2 border-white" title="Sri Sri College of Nursing">

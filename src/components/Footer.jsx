@@ -21,24 +21,40 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-slate-900 text-slate-300 pt-16 pb-12 border-t border-slate-800">
+    <footer className="bg-[#672c1c] text-slate-300 pt-16 pb-12 border-t border-[#7f3b27]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
           {/* Brand Column */}
           <div className="lg:col-span-2 space-y-4">
             <Link to="/" className="flex items-center gap-3 group">
-              <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-brand-500 to-teal-400 flex items-center justify-center text-white shadow-md shadow-brand-500/20">
-                <HeartPulse className="w-6 h-6" />
+              <div className="relative">
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-700 via-brand-600 to-teal-500 flex items-center justify-center text-white shadow-md shadow-brand-500/20 group-hover:scale-105 transition-transform duration-300">
+                  <HeartPulse className="w-6 h-6" />
+                </div>
+                <div className="absolute -bottom-1 -right-1 bg-amber-500 text-white p-1 rounded-full shadow-xs border-2 border-[#672c1c]" title="Sri Sri College of Nursing">
+                  <GraduationCap className="w-3 h-3" />
+                </div>
               </div>
               <div>
-                <div className="text-xs font-bold text-amber-400 flex items-center gap-1.5 uppercase tracking-wide">
+                <div className="text-xs font-bold text-amber-300 flex items-center gap-1.5 uppercase tracking-wide">
                   <GraduationCap className="w-3.5 h-3.5" />
                   <span>{isHindi ? 'श्री श्री कॉलेज ऑफ नर्सिंग' : 'Sri Sri College of Nursing'}</span>
+                  <span className="text-[9px] font-bold tracking-wider bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded border border-amber-200">
+                    {isHindi ? 'शैक्षणिक पहल' : 'INITIATIVE'}
+                  </span>
                 </div>
-                <span className="font-extrabold text-2xl text-white tracking-tight group-hover:text-teal-200 transition-colors">
-                  HEALTH<span className="text-teal-400">MATTERS</span>
-                </span>
+                <div className="flex items-center gap-1.5">
+                  <span className="font-black text-2xl text-white tracking-tight group-hover:text-teal-200 transition-colors">
+                    HEALTH<span className="text-teal-300">MATTERS</span>
+                  </span>
+                  <span className="text-[10px] font-bold uppercase tracking-wider bg-brand-50 text-brand-700 px-1.5 py-0.5 rounded border border-brand-200">
+                    {isHindi ? 'पोर्टल' : 'PORTAL'}
+                  </span>
+                </div>
+                <p className="text-[10px] text-amber-100/70 font-medium tracking-tight">
+                  {isHindi ? 'बेहतर स्वास्थ्य जागरूकता का आपका प्रवेश द्वार' : 'Your Gateway to Better Health Awareness'}
+                </p>
               </div>
             </Link>
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
