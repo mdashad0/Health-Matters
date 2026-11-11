@@ -31,7 +31,7 @@ export default function SearchModal({ isOpen, onClose }) {
       // Check main topic title, summary, symptoms, causes
       let matchedInSubtopic = false;
       topic.subtopics.forEach(sub => {
-        const matchesSubName = sub.name.toLowerCase().includes(query);
+        const matchesSubName = sub.name.toLowerCase().includes(query) || (sub.nameHi && sub.nameHi.toLowerCase().includes(query));
         const matchesDef = sub.definition?.toLowerCase().includes(query);
         const matchesCauses = sub.causes?.some(c => c.toLowerCase().includes(query));
         const matchesSymptoms = sub.symptoms?.some(s => s.toLowerCase().includes(query));
@@ -49,7 +49,7 @@ export default function SearchModal({ isOpen, onClose }) {
         }
       });
 
-      if (!matchedInSubtopic && (topic.title.toLowerCase().includes(query) || topic.summary.toLowerCase().includes(query))) {
+      if (!matchedInSubtopic && (topic.title.toLowerCase().includes(query) || (topic.titleHi && topic.titleHi.toLowerCase().includes(query)) || topic.summary.toLowerCase().includes(query))) {
         results.push({
           type: 'Topic',
           title: topic.title,

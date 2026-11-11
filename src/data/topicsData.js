@@ -2,15 +2,21 @@ export const topicsData = [
   {
     id: 'blood-pressure',
     title: 'Blood Pressure',
+    titleHi: 'रक्तचाप (ब्लड प्रेशर)',
     imageUrl: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=85',
     subtitle: 'Understanding the force of circulating blood and keeping your heart safe.',
+    subtitleHi: 'रक्त प्रवाह के दबाव को समझें और अपने हृदय को सुरक्षित रखें।',
     category: 'Cardiovascular Health',
+    categoryHi: 'हृदय व संवहनी स्वास्थ्य',
     readTime: '6 min read',
+    readTimeHi: '6 मिनट पठन',
     iconName: 'Activity',
     color: 'from-blue-600 to-cyan-600',
     badgeColor: 'bg-blue-50 text-blue-700 border-blue-200',
     summary: 'Blood pressure is the measurement of the pressure of blood pushing against the walls of your arteries as your heart pumps. Keeping it balanced prevents severe cardiac and cerebrovascular complications.',
+    summaryHi: 'रक्तचाप वह दबाव है जो बहता हुआ रक्त धमनियों की दीवारों पर डालता है। इसे सामान्य सीमा में रखकर दिल के दौरे और स्ट्रोक से बचा जा सकता है।',
     heroDescription: 'Blood pressure acts like the water pressure in a garden hose. If the pressure is too high, it strains the hose and engine (heart); if it is too low, vital organs cannot receive enough oxygen and nutrients.',
+    heroDescriptionHi: 'रक्तचाप पानी के पाइप में दबाव की तरह है। यदि दबाव बहुत अधिक हो तो धमनियों और हृदय पर अत्यधिक खिंचाव पड़ता है; यदि बहुत कम हो तो अंगों तक पर्याप्त ऑक्सीजन नहीं पहुंच पाती।',
     
     importantFacts: [
       {
@@ -57,6 +63,7 @@ export const topicsData = [
       {
         id: 'hypertension',
         name: 'Hypertension (High Blood Pressure)',
+        nameHi: 'उच्च रक्तचाप (हाई ब्लड प्रेशर)',
         type: 'high',
         tagline: 'When the pressure inside arteries stays consistently too high (≥ 130/80 mmHg).',
         definition: 'Hypertension occurs when the force of blood flowing through your blood vessels is consistently elevated. Over time, this extra tension tears the delicate inner lining of the artery walls, leading to plaque buildup, heart attacks, stroke, and kidney failure.',
@@ -85,24 +92,26 @@ export const topicsData = [
           'Metabolic syndrome, high cholesterol, or diabetes'
         ],
         prevention: [
-          'Adopt the DASH diet (Dietary Approaches to Stop Hypertension) rich in vegetables, fruits, and whole grains',
-          'Limit sodium intake to under 2,000 mg (less than one teaspoon of salt per day)',
-          'Engage in at least 150 minutes of moderate-intensity aerobic exercise every week',
-          'Maintain a healthy body weight and waist circumference',
-          'Avoid smoking and limit alcohol consumption',
-          'Practice daily relaxation techniques (deep breathing, meditation, restorative sleep)'
+          'Reduce excess salt in daily meals.',
+          'Eat a balanced diet with fruits and vegetables.',
+          'Engage in regular physical activity.',
+          'Avoid tobacco and limit alcohol.',
+          'Maintain a healthy sleep routine.',
+          'Check blood pressure regularly.'
         ],
         management: [
-          'Routine home blood pressure monitoring at the same time each day',
-          'Consistent medication adherence (ACE inhibitors, ARBs, Beta-blockers, Diuretics) as prescribed by a physician',
-          'Regular checkups with a healthcare provider (at least annually or every 3-6 months if diagnosed)',
-          'Reading food nutrition labels carefully for hidden sodium',
-          'Avoiding sudden discontinuation of prescribed blood pressure medications without medical guidance'
+          'Monitor blood pressure as advised.',
+          'Take prescribed medicines regularly.',
+          'Follow the recommended diet.',
+          'Maintain a daily activity routine.',
+          'Attend regular medical follow-ups.',
+          'Never stop medication without medical advice.'
         ]
       },
       {
         id: 'hypotension',
         name: 'Hypotension (Low Blood Pressure)',
+        nameHi: 'निम्न रक्तचाप (लो ब्लड प्रेशर)',
         type: 'low',
         tagline: 'When blood pressure drops below 90/60 mmHg, reducing oxygen delivery to vital organs.',
         definition: 'Hypotension is a condition where arterial blood pressure drops significantly below normal levels. While often harmless or indicative of athletic fitness in young individuals, severe hypotension can starve the brain and vital organs of oxygen, causing dizziness, fainting, and falls.',
@@ -130,19 +139,20 @@ export const topicsData = [
           'Patients on multiple antihypertensive medications'
         ],
         prevention: [
-          'Stay well-hydrated throughout the day by drinking sufficient fluids',
-          'Change positions slowly: sit on the edge of the bed for 30 seconds before standing',
-          'Eat smaller, lower-carbohydrate meals to prevent postprandial blood pressure drops',
-          'Wear compression stockings if recommended by a physician to improve venous return',
-          'Avoid prolonged standing in hot environments'
+          'Maintain adequate fluid intake.',
+          'Avoid standing up suddenly.',
+          'Avoid standing for prolonged periods.',
+          'Eat regular, balanced meals.',
+          'Discuss medicines that may lower BP with a healthcare professional.'
         ],
         management: [
-          'First aid: Have the person sit or lie down immediately and elevate their legs above heart level',
-          'Provide a glass of water or electrolyte beverage if dehydration is suspected',
-          'Review medications with a doctor to adjust dosages if readings are consistently low',
-          'Increase modest salt intake ONLY if specifically advised by a medical practitioner',
-          'Seek immediate emergency care if accompanied by chest pain, blue lips, or loss of consciousness'
-        ]
+          'Sit or lie down if feeling dizzy.',
+          'Get up slowly from sitting or lying positions.',
+          'Drink water if conscious and able to swallow.',
+          'Avoid activities that could cause a fall while dizzy.',
+          'Consult a healthcare professional if dizziness or fainting occurs repeatedly.'
+        ],
+        warning: 'Do not independently increase salt intake or change medicines.'
       }
     ],
 
@@ -158,15 +168,21 @@ export const topicsData = [
   {
     id: 'diabetes',
     title: 'Diabetes Mellitus',
+    titleHi: 'मधुमेह (डायबिटीज मेलिटस)',
     imageUrl: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=85',
     subtitle: 'Demystifying blood sugar regulation, insulin dynamics, and everyday wellness.',
+    subtitleHi: 'रक्त शर्करा नियमन, इंसुलिन कार्यप्रणाली और दैनिक स्वास्थ्य को समझें।',
     category: 'Metabolic Health',
+    categoryHi: 'मेटाबॉलिक स्वास्थ्य',
     readTime: '7 min read',
+    readTimeHi: '7 मिनट पठन',
     iconName: 'Droplet',
     color: 'from-teal-600 to-emerald-600',
     badgeColor: 'bg-teal-50 text-teal-700 border-teal-200',
     summary: 'Diabetes is a chronic metabolic condition where the body cannot properly produce or use insulin, leading to elevated glucose levels in the bloodstream. With early detection and disciplined lifestyle habits, it can be successfully managed.',
+    summaryHi: 'मधुमेह एक पुरानी चयापचय स्थिति है जहां शरीर इंसुलिन का ठीक से उत्पादन या उपयोग नहीं कर पाता है, जिससे रक्त में ग्लूकोज का स्तर बढ़ जाता है।',
     heroDescription: 'Think of glucose as fuel for your cells and insulin as the key that unlocks cell doors so fuel can enter. Without insulin, glucose builds up in the blood like traffic outside a locked gate, starving the cells inside.',
+    heroDescriptionHi: 'ग्लूकोज को कोशिकाओं के ईंधन और इंसुलिन को चाबी की तरह समझें। बिना इंसुलिन के ग्लूकोज रक्त में जमा हो जाता है और कोशिकाएं भूखी रह जाती हैं।',
 
     importantFacts: [
       {
@@ -204,44 +220,9 @@ export const topicsData = [
 
     subtopics: [
       {
-        id: 'type-1',
-        name: 'Type 1 Diabetes',
-        type: 'autoimmune',
-        tagline: 'An autoimmune condition where the pancreas ceases insulin production.',
-        definition: 'Type 1 diabetes is an autoimmune condition where the body immune system mistakenly attacks and destroys the insulin-producing beta cells in the pancreas. It is not caused by diet or lifestyle habits and requires lifelong external insulin therapy.',
-        causes: [
-          'Autoimmune genetic susceptibility (specific HLA gene variants)',
-          'Environmental triggers (such as certain viral infections) that trigger immune dysfunction',
-          'Absolute deficiency of insulin due to islet cell destruction'
-        ],
-        symptoms: [
-          'Rapid, unexplained weight loss despite strong appetite',
-          'Extreme, unquenchable thirst (polydipsia)',
-          'Frequent urination, especially waking multiple times at night (polyuria)',
-          'Overwhelming exhaustion and muscle weakness',
-          'Fruity-smelling breath (sign of diabetic ketoacidosis / DKA - medical emergency)',
-          'Bedwetting in children who previously remained dry at night'
-        ],
-        riskFactors: [
-          'Family history (having a parent or sibling with Type 1 diabetes)',
-          'Geographic latitude (higher incidence farther from the equator)',
-          'Age (frequently diagnosed in childhood, adolescence, or young adulthood)'
-        ],
-        prevention: [
-          'Currently, there is no proven scientific method to prevent Type 1 diabetes.',
-          'Early antibody screening in high-risk family members helps detect early onset before life-threatening DKA occurs.'
-        ],
-        management: [
-          'Multiple daily insulin injections (MDI) or continuous subcutaneous insulin infusion (insulin pump)',
-          'Continuous Glucose Monitoring (CGM) or frequent fingerstick checks',
-          'Carbohydrate counting to match meal intake with insulin dosages precisely',
-          'Always carrying fast-acting glucose tablets or juice for hypoglycemia episodes',
-          'Regular HbA1c testing (target typically below 7% for most non-pregnant adults)'
-        ]
-      },
-      {
         id: 'type-2',
-        name: 'Type 2 Diabetes',
+        name: 'Type 2 Diabetes (Most Common)',
+        nameHi: 'टाइप 2 मधुमेह',
         type: 'lifestyle-metabolic',
         tagline: 'A metabolic disorder where cells become resistant to insulin and insulin supply falls short.',
         definition: 'Type 2 diabetes is the most common form of diabetes. In this condition, the cells in muscle, fat, and liver develop insulin resistance—they fail to respond normally to insulin. The pancreas initially works overtime to produce more insulin, but over time, it cannot keep up, resulting in elevated blood sugar.',
@@ -268,23 +249,67 @@ export const topicsData = [
           'Polycystic Ovary Syndrome (PCOS) or high blood pressure'
         ],
         prevention: [
-          'Achieve and maintain a modest 5% to 7% reduction in body weight if overweight',
-          'Choose whole, unprocessed foods: legumes, leafy greens, berries, whole grains, lean proteins',
-          'Eliminate sugar-sweetened sodas, energy drinks, and packaged fruit juices',
-          'Engage in 150 minutes of moderate aerobic activity plus 2 resistance training sessions weekly',
-          'Prioritize 7-8 hours of sound sleep; chronic sleep deprivation increases insulin resistance'
+          'Choose balanced meals.',
+          'Include vegetables, whole grains and suitable protein sources.',
+          'Limit sugary drinks and excessive added sugar.',
+          'Engage in regular physical activity.',
+          'Attend recommended health screenings.',
+          'Maintain regular sleep and follow-up routines.'
+        ],
+        preventionNote: 'Type 2 diabetes risk can be reduced, but Type 1 diabetes is an autoimmune condition and cannot currently be prevented through lifestyle changes.',
+        management: [
+          'Monitor blood glucose as advised.',
+          'Follow an individualised meal plan.',
+          'Take prescribed medicines or insulin correctly.',
+          'Follow the diabetes-friendly plate method.',
+          'Exercise regularly according to medical advice.',
+          'Maintain foot hygiene and inspect feet regularly.',
+          'Attend regular medical check-ups.'
+        ]
+      },
+      {
+        id: 'type-1',
+        name: 'Type 1 Diabetes (Autoimmune)',
+        nameHi: 'टाइप 1 मधुमेह (ऑटोइम्यून)',
+        type: 'autoimmune',
+        tagline: 'An autoimmune condition where the pancreas ceases insulin production.',
+        definition: 'Type 1 diabetes is an autoimmune condition where the body immune system mistakenly attacks and destroys the insulin-producing beta cells in the pancreas. It is not caused by diet or lifestyle habits and requires lifelong external insulin therapy.',
+        causes: [
+          'Autoimmune genetic susceptibility (specific HLA gene variants)',
+          'Environmental triggers (such as certain viral infections) that trigger immune dysfunction',
+          'Absolute deficiency of insulin due to islet cell destruction'
+        ],
+        symptoms: [
+          'Rapid, unexplained weight loss despite strong appetite',
+          'Extreme, unquenchable thirst (polydipsia)',
+          'Frequent urination, especially waking multiple times at night (polyuria)',
+          'Overwhelming exhaustion and muscle weakness',
+          'Fruity-smelling breath (sign of diabetic ketoacidosis / DKA - medical emergency)',
+          'Bedwetting in children who previously remained dry at night'
+        ],
+        riskFactors: [
+          'Family history (having a parent or sibling with Type 1 diabetes)',
+          'Geographic latitude (higher incidence farther from the equator)',
+          'Age (frequently diagnosed in childhood, adolescence, or young adulthood)'
+        ],
+        prevention: [
+          'Currently, Type 1 diabetes is an autoimmune condition and cannot be prevented through lifestyle changes.',
+          'Early antibody screening in high-risk family members helps detect early onset before life-threatening DKA occurs.'
         ],
         management: [
-          'Personalized meal planning with consistent fiber intake and carbohydrate mindfulness',
-          'Oral antidiabetic medications (e.g., Metformin, SGLT2 inhibitors, GLP-1 receptor agonists)',
-          'Insulin injections if oral medications and lifestyle changes are insufficient',
-          'Daily self-inspection of feet for sores, blisters, or temperature changes',
-          'Annual comprehensive dilated eye exam to screen for diabetic retinopathy'
+          'Monitor blood glucose as advised.',
+          'Follow an individualised meal plan.',
+          'Take prescribed medicines or insulin correctly.',
+          'Follow the diabetes-friendly plate method.',
+          'Exercise regularly according to medical advice.',
+          'Maintain foot hygiene and inspect feet regularly.',
+          'Attend regular medical check-ups.'
         ]
       },
       {
         id: 'gestational',
         name: 'Gestational Diabetes',
+        nameHi: 'गर्भकालीन मधुमेह (जेस्टेशनल)',
         type: 'pregnancy',
         tagline: 'High blood sugar that develops during pregnancy, typically between weeks 24 and 28.',
         definition: 'Gestational diabetes occurs when placental hormones interfere with insulin function during pregnancy, leading to insulin resistance and maternal hyperglycemia. While it typically resolves after delivery, it increases long-term risk of developing Type 2 diabetes for both mother and child.',
@@ -306,16 +331,17 @@ export const topicsData = [
           'Previous birth of a baby weighing more than 9 pounds'
         ],
         prevention: [
-          'Adopt healthy dietary patterns and achieve a balanced weight before conceiving',
-          'Remain physically active before and throughout pregnancy with doctor approval (walking, swimming)',
-          'Focus on nutrient-dense meals with adequate protein, complex carbohydrates, and vegetables'
+          'Choose balanced meals with whole grains and adequate protein.',
+          'Limit sugary drinks and desserts.',
+          'Remain physically active with doctor approval (gentle walking).',
+          'Attend recommended prenatal screenings.'
         ],
         management: [
-          'Regular blood glucose monitoring 4 times a day (fasting and 1-2 hours after meals)',
-          'Nutritional therapy tailored by a registered dietitian or certified diabetes educator',
-          'Safe physical activity like 20-30 minute walks after meals to blunt glucose spikes',
-          'Insulin therapy or safe medications if blood sugars exceed pregnancy targets',
-          'Postpartum screening 4 to 12 weeks after delivery to ensure blood sugar returns to normal'
+          'Monitor blood glucose as advised (fasting & post-meal).',
+          'Follow an individualised meal plan.',
+          'Follow the diabetes-friendly plate method.',
+          'Take prescribed medicines or insulin correctly if indicated.',
+          'Attend regular medical check-ups.'
         ]
       }
     ],
@@ -330,15 +356,21 @@ export const topicsData = [
   {
     id: 'dehydration',
     title: 'Dehydration',
+    titleHi: 'निर्जलीकरण (पानी की कमी)',
     imageUrl: 'https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=1200&q=85',
     subtitle: 'Recognizing fluid loss, protecting cellular function, and optimizing hydration.',
+    subtitleHi: 'तरल की कमी को पहचानें, कोशिकीय स्वास्थ्य की रक्षा करें और जलयोजन बेहतर बनाएं।',
     category: 'General Wellness & Physiology',
+    categoryHi: 'सामान्य स्वास्थ्य व शरीर क्रिया विज्ञान',
     readTime: '5 min read',
+    readTimeHi: '5 मिनट पठन',
     iconName: 'Sparkles',
     color: 'from-cyan-600 to-blue-600',
     badgeColor: 'bg-cyan-50 text-cyan-700 border-cyan-200',
     summary: 'Dehydration occurs when your body loses more water and essential electrolytes than you take in. Because the human body is roughly 60% water, even mild dehydration impairs physical stamina, cognitive sharpness, and kidney health.',
+    summaryHi: 'निर्जलीकरण तब होता है जब शरीर में आने वाले पानी की तुलना में निकलने वाले पानी और इलेक्ट्रोलाइट्स की मात्रा अधिक हो जाती है।',
     heroDescription: 'Water is the lifeblood of human physiology. It lubricates joints, regulates internal temperature through sweat, transports oxygen and nutrients in blood, and flushes metabolic waste through the kidneys.',
+    heroDescriptionHi: 'पानी मानव शरीर के लिए जीवन रेखा है। यह जोड़ों को चिकनाई देता है, पसीने से शरीर का तापमान नियंत्रित करता है और गुर्दों के माध्यम से अपशिष्ट को बाहर निकालता है।',
 
     importantFacts: [
       {
@@ -376,33 +408,51 @@ export const topicsData = [
 
     subtopics: [
       {
-        id: 'causes-and-mechanisms',
-        name: 'Causes & Mechanisms of Fluid Loss',
-        type: 'causes',
-        tagline: 'Understanding how your body loses water faster than you replace it.',
-        definition: 'Your body continually loses moisture through exhaled air, perspiration, urine, and stool. When fluid losses are accelerated by environmental heat, physical exertion, or acute illness, a dangerous deficit develops unless water and minerals are proactively replenished.',
+        id: 'treatment-prevention',
+        name: 'Prevention & Home Care Guidelines',
+        nameHi: 'रोकथाम और घरेलू देखभाल दिशा-निर्देश',
+        type: 'prevention-management',
+        tagline: 'Evidence-based strategies to stay properly hydrated every day.',
+        definition: 'Preventing dehydration is far easier than treating severe fluid loss. Proper hydration involves drinking before you feel thirsty, monitoring urine color, balancing electrolytes, and adjusting fluid intake for heat and activity.',
         causes: [
           'High environmental temperature and humidity leading to excessive perspiration',
           'Vigorous athletic training or heavy manual labor without scheduled water breaks',
           'Gastrointestinal illness with persistent diarrhea or acute vomiting',
-          'High fever (the body consumes more fluid as metabolic rate increases)',
-          'Frequent urination due to uncontrolled diabetes or diuretic medications',
-          'Excessive caffeine or alcohol consumption which exert mild diuretic effects',
-          'Simply forgetting to drink or having limited access to clean drinking water'
+          'High fever (the body consumes more fluid as metabolic rate increases)'
         ],
-        symptoms: [],
+        symptoms: [
+          'Dry mouth and tongue',
+          'Dark yellow or amber-colored urine',
+          'Fatigue, muscle cramps and lightheadedness',
+          'Sunken eyes and reduced urine output'
+        ],
         riskFactors: [
-          'Infants and young children (higher body surface area to mass ratio, cannot express thirst)',
-          'Older adults (thirst sensation blunts with age, kidneys concentrate urine less efficiently)',
-          'Outdoor workers and endurance athletes',
-          'People living at high altitudes (lower humidity causes rapid moisture loss from lungs)'
+          'Infants and young children',
+          'Older adults with blunted thirst sensation',
+          'Outdoor workers and manual laborers',
+          'People suffering from acute gastroenteritis'
         ],
-        prevention: [],
-        management: []
+        prevention: [
+          'Drink sufficient fluids throughout the day.',
+          'Increase fluid intake during hot weather and physical activity.',
+          'Eat water-rich foods such as watermelon and cucumber.',
+          'Maintain hygiene and safe food practices.',
+          'Take appropriate care during fever, vomiting and diarrhoea.'
+        ],
+        management: [
+          'Drink water regularly in small, frequent sips.',
+          'Use ORS during diarrhoea or vomiting when appropriate.',
+          'Prepare ORS using exactly the water quantity written on the packet.',
+          'Continue suitable food as tolerated.',
+          'Rest in a cool environment.',
+          'Seek medical assistance if symptoms persist or worsen.'
+        ],
+        warning: 'Warning: Confusion, unconsciousness, inability to drink or severe weakness requires urgent medical attention.'
       },
       {
         id: 'stages-and-symptoms',
         name: 'Symptoms & Warning Signs by Severity',
+        nameHi: 'गंभीरता के अनुसार लक्षण व चेतावनी संकेत',
         type: 'symptoms',
         tagline: 'From mild dry mouth to life-threatening hypovolemic shock.',
         definition: 'Dehydration progresses through distinct stages. Recognizing early signs allows quick, simple oral correction, while missing late warning signs can lead to kidney shutdown, heat stroke, or cardiovascular collapse.',
@@ -442,32 +492,47 @@ export const topicsData = [
           'Irritability and confusion'
         ],
         riskFactors: [],
-        prevention: [],
-        management: []
-      },
-      {
-        id: 'treatment-prevention',
-        name: 'Prevention, Treatment & Hydration Rules',
-        type: 'prevention-management',
-        tagline: 'Evidence-based strategies to stay properly hydrated every day.',
-        definition: 'Preventing dehydration is far easier than treating severe fluid loss. Proper hydration involves drinking before you feel thirsty, monitoring urine color, balancing electrolytes, and adjusting fluid intake for heat and activity.',
-        causes: [],
-        symptoms: [],
-        riskFactors: [],
         prevention: [
-          'Drink a glass of water first thing in the morning to offset overnight respiratory fluid loss',
-          'Carry a reusable water bottle and sip steadily throughout work and school hours',
-          'Eat water-rich foods: watermelon, cucumbers, strawberries, oranges, lettuce, and tomatoes',
-          'Hydrate before, during, and after exercise (drink 200-300 ml every 15-20 minutes of intense sweating)',
-          'Drink extra fluids in hot, sunny, or dry environments even if sitting indoors in air conditioning',
-          'Monitor your urine color: pale straw or light lemonade yellow indicates ideal hydration'
+          'Drink sufficient fluids throughout the day.',
+          'Increase fluid intake during hot weather and physical activity.',
+          'Eat water-rich foods such as watermelon and cucumber.'
         ],
         management: [
-          'For mild dehydration: Sip water, coconut water, or broth slowly over 30 to 60 minutes',
-          'For illness with diarrhea/vomiting: Use Oral Rehydration Salts (ORS) solution containing balanced water, glucose, and sodium/potassium',
-          'Emergency homemade ORS ratio: Mix 6 level teaspoons of sugar and 1/2 level teaspoon of salt in 1 liter of clean drinking water',
-          'Avoid very cold or overly sugary beverages during acute dehydration as they can worsen stomach cramping',
-          'For severe dehydration: Seek hospital emergency care immediately for intravenous (IV) isotonic fluids'
+          'Drink water regularly in small, frequent sips.',
+          'Rest in a cool environment.',
+          'Seek medical assistance if symptoms persist or worsen.'
+        ]
+      },
+      {
+        id: 'causes-and-mechanisms',
+        name: 'Causes & Mechanisms of Fluid Loss',
+        nameHi: 'तरल की कमी के कारण और तंत्र',
+        type: 'causes',
+        tagline: 'Understanding how your body loses water faster than you replace it.',
+        definition: 'Your body continually loses moisture through exhaled air, perspiration, urine, and stool. When fluid losses are accelerated by environmental heat, physical exertion, or acute illness, a dangerous deficit develops unless water and minerals are proactively replenished.',
+        causes: [
+          'High environmental temperature and humidity leading to excessive perspiration',
+          'Vigorous athletic training or heavy manual labor without scheduled water breaks',
+          'Gastrointestinal illness with persistent diarrhea or acute vomiting',
+          'High fever (the body consumes more fluid as metabolic rate increases)',
+          'Frequent urination due to uncontrolled diabetes or diuretic medications',
+          'Excessive caffeine or alcohol consumption which exert mild diuretic effects',
+          'Simply forgetting to drink or having limited access to clean drinking water'
+        ],
+        symptoms: [],
+        riskFactors: [
+          'Infants and young children (higher body surface area to mass ratio, cannot express thirst)',
+          'Older adults (thirst sensation blunts with age, kidneys concentrate urine less efficiently)',
+          'Outdoor workers and endurance athletes',
+          'People living at high altitudes (lower humidity causes rapid moisture loss from lungs)'
+        ],
+        prevention: [
+          'Drink sufficient fluids throughout the day.',
+          'Maintain hygiene and safe food practices.'
+        ],
+        management: [
+          'Drink water regularly in small, frequent sips.',
+          'Use ORS during diarrhoea or vomiting when appropriate.'
         ]
       }
     ],

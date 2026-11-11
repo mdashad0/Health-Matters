@@ -19,13 +19,16 @@ import {
   TrendingUp,
   Activity,
   Droplet,
-  Layers
+  Layers,
+  GraduationCap
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { mcqQuestions, mythFactQuestions, performanceLevels } from '../data/quizData';
+import { useLanguage } from '../context/LanguageContext';
 import MedicalDisclaimer from '../components/MedicalDisclaimer';
 
 export default function QuizPage() {
+  const { isHindi } = useLanguage();
   // Quiz Modes: 'mcq' | 'myth-fact' | 'combined'
   const [quizMode, setQuizMode] = useState('mcq');
   const [topicFilter, setTopicFilter] = useState('All');
@@ -205,14 +208,16 @@ export default function QuizPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-100 text-teal-800 text-xs font-bold uppercase tracking-wider">
-              <Award className="w-3.5 h-3.5" />
-              <span>Interactive Knowledge Testing</span>
+              <GraduationCap className="w-3.5 h-3.5 text-teal-700" />
+              <span>{isHindi ? 'श्री श्री कॉलेज ऑफ नर्सिंग • ज्ञान मूल्यांकन' : 'Sri Sri College of Nursing • Knowledge Assessment'}</span>
             </div>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
-              Health Awareness Quiz
+              {isHindi ? 'स्वास्थ्य जागरूकता प्रश्नोत्तरी' : 'Health Awareness Quiz'}
             </h1>
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-              Test your knowledge on Blood Pressure, Diabetes, and Dehydration. Select between Multiple Choice Questions and Myth vs. Fact challenges!
+              {isHindi
+                ? 'रक्तचाप, मधुमेह और निर्जलीकरण पर अपने ज्ञान का परीक्षण करें। बहुविकल्पीय प्रश्नों और मिथक बनाम तथ्य चुनौतियों में से चुनें!'
+                : 'Test your knowledge on Blood Pressure, Diabetes, and Dehydration. Select between Multiple Choice Questions and Myth vs. Fact challenges!'}
             </p>
           </div>
 

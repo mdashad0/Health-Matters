@@ -16,14 +16,20 @@ import {
   Compass,
   ArrowUpRight,
   Lightbulb,
+  GraduationCap,
+  Utensils,
+  Stethoscope
 } from 'lucide-react';
 import { topicsData } from '../data/topicsData';
 import { healthTips, platformFeatures } from '../data/tipsData';
+import { useLanguage } from '../context/LanguageContext';
 import BpCalculator from '../components/BpCalculator';
 import HydrationCalculator from '../components/HydrationCalculator';
 import MedicalDisclaimer from '../components/MedicalDisclaimer';
 
 export default function HomePage() {
+  const { isHindi } = useLanguage();
+
   const getTopicIcon = (iconName) => {
     switch (iconName) {
       case 'Activity': return <Activity className="w-6 h-6" />;
@@ -60,67 +66,69 @@ export default function HomePage() {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_30%,rgba(14,165,233,0.24),transparent_45%)]" />
             <div className="relative max-w-2xl">
               <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="space-y-6"
-            >
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/25 text-cyan-100 text-xs font-semibold backdrop-blur-md">
-                <span className="flex h-2 w-2 rounded-full bg-teal-300 animate-ping"></span>
-                <span>Evidence-Based Digital Health Education</span>
-              </div>
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="space-y-6"
+              >
+                {/* Sri Sri College of Nursing Institution Badge */}
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/20 border border-amber-400/40 text-amber-200 text-xs font-bold backdrop-blur-md">
+                  <GraduationCap className="w-4 h-4 text-amber-300" />
+                  <span>{isHindi ? 'श्री श्री कॉलेज ऑफ नर्सिंग • जन स्वास्थ्य साक्षरता पहल' : 'Sri Sri College of Nursing • Public Health Literacy Initiative'}</span>
+                </div>
 
-              {/* Title & Tagline */}
-              <div className="space-y-3">
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.15]">
-                  HEALTH <span className="text-cyan-300">MATTERS</span>
-                </h1>
-                <p className="text-xl sm:text-2xl font-bold text-teal-200 tracking-tight">
-                  "Your Gateway to Better Health Awareness."
+                {/* Title & Tagline */}
+                <div className="space-y-3">
+                  <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.15]">
+                    HEALTH <span className="text-cyan-300">MATTERS</span>
+                  </h1>
+                  <p className="text-xl sm:text-2xl font-bold text-teal-200 tracking-tight">
+                    {isHindi ? '"बेहतर स्वास्थ्य जागरूकता का आपका प्रवेश द्वार"' : '"Your Gateway to Better Health Awareness."'}
+                  </p>
+                </div>
+
+                {/* Welcome message & description */}
+                <p className="text-base sm:text-lg text-slate-200 leading-relaxed max-w-2xl">
+                  {isHindi
+                    ? 'हेल्थ मैटर्स में आपका स्वागत है! हमारा उद्देश्य सामान्य स्वास्थ्य स्थितियों—उनके कारण, लक्षण, रोकथाम और घरेलू देखभाल—के बारे में सरल भाषा, 50-25-25 आहार चार्ट और इंटरैक्टिव क्विज़ के माध्यम से सशक्त बनाना है।'
+                    : 'Welcome to Health Matters! Our mission is to educate and empower people about common health conditions—their causes, symptoms, prevention, 50–25–25 plate diet methods, and home care—through simple language, visual guides, and interactive health quizzes.'}
                 </p>
-              </div>
 
-              {/* Welcome message & description */}
-              <p className="text-base sm:text-lg text-slate-200 leading-relaxed max-w-2xl">
-                Welcome to Health Matters! Our mission is to educate and empower people about common health conditions—their causes, symptoms, prevention, and daily management—through simple language, visual guides, and interactive health quizzes.
-              </p>
-
-              {/* Key Highlights */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
-                <div className="flex items-center gap-2 text-xs font-semibold text-slate-700">
-                  <CheckCircle2 className="w-4 h-4 text-teal-300 shrink-0" />
-                  <span className="text-slate-100">Jargon-Free Guides</span>
+                {/* Key Highlights */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+                  <div className="flex items-center gap-2 text-xs font-semibold text-slate-100">
+                    <CheckCircle2 className="w-4 h-4 text-teal-300 shrink-0" />
+                    <span>{isHindi ? '50-25-25 डाइट चार्ट' : '50–25–25 Plate Method'}</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs font-semibold text-slate-100">
+                    <CheckCircle2 className="w-4 h-4 text-teal-300 shrink-0" />
+                    <span>{isHindi ? 'रोकथाम व घरेलू देखभाल' : 'Prevention & Home Care'}</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs font-semibold text-slate-100">
+                    <CheckCircle2 className="w-4 h-4 text-teal-300 shrink-0" />
+                    <span>{isHindi ? 'द्विभाषी (English/हिन्दी)' : 'Bilingual (EN / हिन्दी)'}</span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2 text-xs font-semibold text-slate-700">
-                  <CheckCircle2 className="w-4 h-4 text-teal-300 shrink-0" />
-                  <span className="text-slate-100">Interactive Quizzes</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs font-semibold text-slate-700">
-                  <CheckCircle2 className="w-4 h-4 text-teal-300 shrink-0" />
-                  <span className="text-slate-100">100% Free & Open</span>
-                </div>
-              </div>
 
-              {/* CTA Buttons */}
-              <div className="flex flex-wrap items-center gap-4 pt-4">
-                <Link
-                  to="/explore"
-                  className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-brand-600 to-teal-600 hover:from-brand-700 hover:to-teal-700 text-white font-bold text-base shadow-lg shadow-brand-500/25 hover:shadow-xl transition-all duration-200 flex items-center gap-2.5 group cursor-pointer"
-                >
-                  <BookOpen className="w-5 h-5" />
-                  <span>Explore Topics</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
+                {/* CTA Buttons */}
+                <div className="flex flex-wrap items-center gap-4 pt-4">
+                  <Link
+                    to="/explore"
+                    className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-brand-600 to-teal-600 hover:from-brand-700 hover:to-teal-700 text-white font-bold text-base shadow-lg shadow-brand-500/25 hover:shadow-xl transition-all duration-200 flex items-center gap-2.5 group cursor-pointer"
+                  >
+                    <BookOpen className="w-5 h-5" />
+                    <span>{isHindi ? 'विषय देखें' : 'Explore Topics'}</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </Link>
 
-                <Link
-                  to="/quiz"
-                  className="px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-base border border-white/30 shadow-sm hover:shadow transition-all duration-200 flex items-center gap-2.5 cursor-pointer backdrop-blur-sm"
-                >
-                  <HelpCircle className="w-5 h-5 text-teal-200" />
-                  <span>Test Your Knowledge</span>
-                </Link>
-              </div>
+                  <Link
+                    to="/quiz"
+                    className="px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-base border border-white/30 shadow-sm hover:shadow transition-all duration-200 flex items-center gap-2.5 cursor-pointer backdrop-blur-sm"
+                  >
+                    <HelpCircle className="w-5 h-5 text-teal-200" />
+                    <span>{isHindi ? 'क्विज़ लें' : 'Test Your Knowledge'}</span>
+                  </Link>
+                </div>
               </motion.div>
             </div>
           </div>
@@ -132,6 +140,67 @@ export default function HomePage() {
         <MedicalDisclaimer variant="banner" />
       </div>
 
+      {/* 2.5 QUICK ACCESS CALLOUTS: DIET CHART & PREVENTION */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Diabetes Diet Chart Highlight */}
+          <Link
+            to="/topics/diabetes#diet-chart"
+            className="group p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-teal-50 via-emerald-50 to-white border-2 border-teal-200 hover:border-teal-400 transition-all shadow-card hover:shadow-lg flex flex-col justify-between"
+          >
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full bg-teal-100 text-teal-800 border border-teal-200">
+                  {isHindi ? 'नैदानिक आहार विधि' : 'Clinical Nutrition'}
+                </span>
+                <div className="w-10 h-10 rounded-xl bg-teal-600 text-white flex items-center justify-center shadow-sm group-hover:scale-105 transition">
+                  <Utensils className="w-5 h-5" />
+                </div>
+              </div>
+              <h3 className="text-2xl font-black text-slate-900 group-hover:text-teal-700 transition">
+                {isHindi ? '50–25–25 मधुमेह आहार चार्ट' : '50–25–25 Diabetes Diet Chart'}
+              </h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                {isHindi
+                  ? 'अमेरिकन डायबिटीज एसोसिएशन (ADA) द्वारा अनुशंसित सरल प्लेट विभाजन विधि: 50% गैर-स्टार्च वाली सब्जियां, 25% लीन प्रोटीन, और 25% साबुत अनाज।'
+                  : 'The ADA clinically recommended plate method: 50% non-starchy vegetables, 25% lean protein, and 25% whole grains for stable blood sugar control.'}
+              </p>
+            </div>
+            <div className="pt-4 flex items-center gap-2 text-sm font-bold text-teal-700 group-hover:translate-x-1 transition-transform">
+              <span>{isHindi ? 'इंटरैक्टिव प्लेट मॉडल देखें →' : 'View Interactive Plate Chart →'}</span>
+            </div>
+          </Link>
+
+          {/* Prevention & Home Care Highlight */}
+          <Link
+            to="/topics/blood-pressure#prevention-care"
+            className="group p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-blue-50 via-indigo-50 to-white border-2 border-blue-200 hover:border-blue-400 transition-all shadow-card hover:shadow-lg flex flex-col justify-between"
+          >
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full bg-blue-100 text-blue-800 border border-blue-200">
+                  {isHindi ? 'साक्ष्य-आधारित गाइड' : 'Evidence-Based Care'}
+                </span>
+                <div className="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center shadow-sm group-hover:scale-105 transition">
+                  <Stethoscope className="w-5 h-5" />
+                </div>
+              </div>
+              <h3 className="text-2xl font-black text-slate-900 group-hover:text-blue-700 transition">
+                {isHindi ? 'रोकथाम और घरेलू देखभाल गाइड' : 'Prevention & Home-Care Guides'}
+              </h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                {isHindi
+                  ? 'उच्च रक्तचाप, निम्न रक्तचाप, निर्जलीकरण (ORS नियम) और मधुमेह के लिए सत्यापित दैनिक घरेलू प्रबंधन और आपातकालीन सावधानियां।'
+                  : 'Verified actionable steps and clinical precautions for Hypertension, Hypotension, Dehydration (ORS rules), and Diabetes Mellitus.'}
+              </p>
+            </div>
+            <div className="pt-4 flex items-center gap-2 text-sm font-bold text-blue-700 group-hover:translate-x-1 transition-transform">
+              <span>{isHindi ? 'रोकथाम व देखभाल प्रोटोकॉल देखें →' : 'Explore Prevention & Care Guides →'}</span>
+            </div>
+          </Link>
+        </div>
+      </section>
+
       {/* 3. FEATURED HEALTH TOPICS SECTION */}
       <section className="relative overflow-hidden border-y border-brand-100 bg-gradient-to-br from-brand-50 via-white to-cyan-50 py-16">
         <div className="pointer-events-none absolute -left-24 top-10 h-64 w-64 rounded-full bg-brand-200/30 blur-3xl" />
@@ -139,111 +208,113 @@ export default function HomePage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 border border-teal-200 text-teal-800 text-xs font-bold tracking-wide uppercase shadow-sm">
-              <span>Essential Health Knowledge</span>
+              <span>{isHindi ? 'आवश्यक स्वास्थ्य ज्ञान' : 'Essential Health Knowledge'}</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Featured Health Topics
+              {isHindi ? 'प्रमुख स्वास्थ्य विषय' : 'Featured Health Topics'}
             </h2>
             <p className="text-base text-slate-600">
-              Dive deep into the most common preventable health challenges. Learn their mechanisms, warning signs, and evidence-based management.
+              {isHindi
+                ? 'सामान्य रोकी जा सकने वाली स्वास्थ्य समस्याओं को विस्तार से समझें। उनके शारीरिक तंत्र, चेतावनी संकेत और घरेलू देखभाल जानें।'
+                : 'Dive deep into common preventable health challenges. Learn their mechanisms, warning signs, prevention, and home care.'}
             </p>
           </div>
 
-        {/* 3 Topic Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {topicsData.map((topic, index) => (
-            <motion.div
-              key={topic.id}
-              whileHover={{ y: -6 }}
-              transition={{ duration: 0.2 }}
-              className="interactive-card bg-white rounded-3xl border border-slate-200/90 shadow-card overflow-hidden flex flex-col justify-between group"
-            >
-              <div>
-                <div className="relative h-40 overflow-hidden">
-                  <img
-                    src={topic.imageUrl}
-                    alt={`${topic.title} educational illustration`}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className={`absolute inset-0 bg-gradient-to-t ${topic.color} opacity-65`} />
-                  <div className="absolute bottom-4 left-5 right-5 flex items-center justify-between text-white">
-                    <span className="text-xs font-bold uppercase tracking-wider">Health guide</span>
-                    <span className="rounded-full bg-white/20 px-2.5 py-1 text-[11px] font-semibold backdrop-blur-sm">
-                      Learn more
-                    </span>
+          {/* 3 Topic Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {topicsData.map((topic) => (
+              <motion.div
+                key={topic.id}
+                whileHover={{ y: -6 }}
+                transition={{ duration: 0.2 }}
+                className="interactive-card bg-white rounded-3xl border border-slate-200/90 shadow-card overflow-hidden flex flex-col justify-between group"
+              >
+                <div>
+                  <div className="relative h-40 overflow-hidden">
+                    <img
+                      src={topic.imageUrl}
+                      alt={`${topic.title} educational illustration`}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className={`absolute inset-0 bg-gradient-to-t ${topic.color} opacity-65`} />
+                    <div className="absolute bottom-4 left-5 right-5 flex items-center justify-between text-white">
+                      <span className="text-xs font-bold uppercase tracking-wider">{isHindi ? 'स्वास्थ्य गाइड' : 'Health guide'}</span>
+                      <span className="rounded-full bg-white/20 px-2.5 py-1 text-[11px] font-semibold backdrop-blur-sm">
+                        {isHindi ? 'गाइड खोलें' : 'Learn more'}
+                      </span>
+                    </div>
                   </div>
-                </div>
 
-                {/* Card Top Banner */}
-                <div className={`p-6 bg-gradient-to-r ${topic.color} text-white relative`}>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-sm text-white">
-                      {topic.category}
-                    </span>
-                    <span className="text-xs text-white/80 font-medium">
-                      {topic.readTime}
-                    </span>
+                  {/* Card Top Banner */}
+                  <div className={`p-6 bg-gradient-to-r ${topic.color} text-white relative`}>
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-sm text-white">
+                        {isHindi && topic.categoryHi ? topic.categoryHi : topic.category}
+                      </span>
+                      <span className="text-xs text-white/80 font-medium">
+                        {isHindi && topic.readTimeHi ? topic.readTimeHi : topic.readTime}
+                      </span>
+                    </div>
+                    <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center mb-3">
+                      {getTopicIcon(topic.iconName)}
+                    </div>
+                    <h3 className="text-2xl font-bold tracking-tight text-white mb-1">
+                      {isHindi && topic.titleHi ? topic.titleHi : topic.title}
+                    </h3>
+                    <p className="text-xs text-white/90 line-clamp-2">
+                      {isHindi && topic.subtitleHi ? topic.subtitleHi : topic.subtitle}
+                    </p>
                   </div>
-                  <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center mb-3">
-                    {getTopicIcon(topic.iconName)}
-                  </div>
-                  <h3 className="text-2xl font-bold tracking-tight text-white mb-1">
-                    {topic.title}
-                  </h3>
-                  <p className="text-xs text-white/90 line-clamp-2">
-                    {topic.subtitle}
-                  </p>
-                </div>
 
-                {/* Card Body */}
-                <div className="p-6 space-y-4">
-                  <p className="text-sm text-slate-600 leading-relaxed line-clamp-3">
-                    {topic.summary}
-                  </p>
+                  {/* Card Body */}
+                  <div className="p-6 space-y-4">
+                    <p className="text-sm text-slate-600 leading-relaxed line-clamp-3">
+                      {isHindi && topic.summaryHi ? topic.summaryHi : topic.summary}
+                    </p>
 
-                  {/* Subtopics badges */}
-                  <div>
-                    <h5 className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">
-                      Key Topics Covered
-                    </h5>
-                    <div className="flex flex-wrap gap-1.5">
-                      {topic.subtopics.map(sub => (
-                        <span
-                          key={sub.id}
-                          className="text-xs px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 font-medium"
-                        >
-                          {sub.name.split('(')[0]}
-                        </span>
-                      ))}
+                    {/* Subtopics badges */}
+                    <div>
+                      <h5 className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">
+                        {isHindi ? 'शामिल मुख्य विषय' : 'Key Topics Covered'}
+                      </h5>
+                      <div className="flex flex-wrap gap-1.5">
+                        {topic.subtopics.map(sub => (
+                          <span
+                            key={sub.id}
+                            className="text-xs px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 font-medium"
+                          >
+                            {(isHindi && sub.nameHi ? sub.nameHi : sub.name).split('(')[0]}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Card Footer Button */}
-              <div className="p-6 pt-0">
-                <Link
-                  to={`/topics/${topic.id}`}
-                  className="w-full py-3 px-4 rounded-xl bg-slate-100 group-hover:bg-brand-600 group-hover:text-white text-slate-800 font-bold text-sm transition-all duration-200 flex items-center justify-center gap-2"
-                >
-                  <span>Explore Condition Guide</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+                {/* Card Footer Button */}
+                <div className="p-6 pt-0">
+                  <Link
+                    to={`/topics/${topic.id}`}
+                    className="w-full py-3 px-4 rounded-xl bg-slate-100 group-hover:bg-brand-600 group-hover:text-white text-slate-800 font-bold text-sm transition-all duration-200 flex items-center justify-center gap-2"
+                  >
+                    <span>{isHindi ? 'सम्पूर्ण गाइड पढ़ें' : 'Explore Condition Guide'}</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </div>
+              </motion.div>
+            ))}
+          </div>
 
-        <div className="text-center mt-10">
-          <Link
-            to="/explore"
-            className="inline-flex items-center gap-2 text-brand-600 hover:text-brand-800 font-bold text-sm group"
-          >
-            <span>View All Detailed Health Guides & Search Options</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </div>
+          <div className="text-center mt-10">
+            <Link
+              to="/explore"
+              className="inline-flex items-center gap-2 text-brand-600 hover:text-brand-800 font-bold text-sm group"
+            >
+              <span>{isHindi ? 'सभी विस्तृत स्वास्थ्य गाइड और खोज विकल्प देखें' : 'View All Detailed Health Guides & Search Options'}</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -253,13 +324,15 @@ export default function HomePage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
             <span className="text-xs font-bold uppercase tracking-wider text-cyan-100 bg-white/10 px-3 py-1 rounded-full border border-cyan-300/30 backdrop-blur-sm">
-              Why We Are Different
+              {isHindi ? 'हमारी विशेषताएं' : 'Why We Are Different'}
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-              Why Choose Health Matters?
+              {isHindi ? 'हेल्थ मैटर्स क्यों चुनें?' : 'Why Choose Health Matters?'}
             </h2>
             <p className="text-base text-slate-300">
-              Medical knowledge should be transparent, accessible, and engaging for everyone—not hidden behind complex clinical jargon.
+              {isHindi
+                ? 'श्री श्री कॉलेज ऑफ नर्सिंग द्वारा संचालित यह पोर्टल साक्ष्य-आधारित, सुलभ और जन-जागरूकता केंद्रित है।'
+                : 'Medical knowledge should be transparent, accessible, and engaging for everyone—not hidden behind complex clinical jargon.'}
             </p>
           </div>
 
@@ -284,13 +357,15 @@ export default function HomePage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-10 space-y-3">
           <span className="text-xs font-bold uppercase tracking-wider text-teal-700 bg-teal-50 px-3 py-1 rounded-full border border-teal-200">
-            Interactive Calculators
+            {isHindi ? 'इंटरैक्टिव कैलकुलेटर' : 'Interactive Calculators'}
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Check Your Numbers In Real Time
+            {isHindi ? 'वास्तविक समय में अपने नंबरों की जांच करें' : 'Check Your Numbers In Real Time'}
           </h2>
           <p className="text-base text-slate-600">
-            Use our built-in calculators to assess your blood pressure category or calculate your personalized daily hydration requirement.
+            {isHindi
+              ? 'रक्तचाप वर्गीकरण की जांच करने या अपनी दैनिक जलयोजन आवश्यकता की गणना करने के लिए हमारे अंतर्निहित कैलकुलेटर का उपयोग करें।'
+              : 'Use our built-in calculators to assess your blood pressure category or calculate your personalized daily hydration requirement.'}
           </p>
         </div>
 
@@ -307,14 +382,14 @@ export default function HomePage() {
             <div>
               <div className="inline-flex items-center gap-1.5 text-teal-400 text-xs font-bold uppercase tracking-wider mb-2">
                 <Lightbulb className="w-4 h-4" />
-                <span>Daily Health Awareness Tips</span>
+                <span>{isHindi ? 'दैनिक स्वास्थ्य सुझाव' : 'Daily Health Awareness Tips'}</span>
               </div>
               <h2 className="text-3xl font-extrabold text-white tracking-tight">
-                Quick Habits For Lifelong Wellness
+                {isHindi ? 'आजीवन कल्याण के लिए छोटी आदतें' : 'Quick Habits For Lifelong Wellness'}
               </h2>
             </div>
             <p className="text-slate-400 text-sm max-w-md">
-              Small daily lifestyle adjustments make an enormous difference in preventing chronic disease.
+              {isHindi ? 'दैनिक जीवनशैली में छोटे बदलाव पुरानी बीमारियों को रोकने में बहुत बड़ा प्रभाव डालते हैं।' : 'Small daily lifestyle adjustments make an enormous difference in preventing chronic disease.'}
             </p>
           </div>
 
@@ -345,27 +420,29 @@ export default function HomePage() {
         <div className="rounded-3xl bg-gradient-to-r from-brand-700 via-teal-700 to-brand-800 text-white p-8 md:p-14 shadow-2xl relative overflow-hidden">
           <div className="relative z-10 max-w-2xl space-y-4">
             <span className="inline-block px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-xs font-bold uppercase tracking-wider">
-              Interactive Health Quiz
+              {isHindi ? 'इंटरैक्टिव स्वास्थ्य प्रश्नोत्तरी' : 'Interactive Health Quiz'}
             </span>
             <h2 className="text-3xl sm:text-5xl font-black tracking-tight leading-tight">
-              Read. Interact. Learn. Test Your Knowledge.
+              {isHindi ? 'पढ़ें। समझें। सीखें। अपना ज्ञान परखें।' : 'Read. Interact. Learn. Test Your Knowledge.'}
             </h2>
             <p className="text-slate-200 text-base sm:text-lg leading-relaxed">
-              Challenge yourself with our Multiple Choice Questions and Myth vs. Fact tests covering Blood Pressure, Diabetes, and Dehydration. Review your score, earn badges, and save your progress!
+              {isHindi
+                ? 'रक्तचाप, मधुमेह और निर्जलीकरण को कवर करने वाले हमारे बहुविकल्पीय प्रश्नों और मिथक बनाम तथ्य परीक्षणों के साथ खुद को चुनौती दें!'
+                : 'Challenge yourself with our Multiple Choice Questions and Myth vs. Fact tests covering Blood Pressure, Diabetes, and Dehydration. Review your score, earn badges, and save your progress!'}
             </p>
             <div className="pt-2 flex flex-wrap gap-4">
               <Link
                 to="/quiz"
                 className="px-8 py-4 rounded-xl bg-white hover:bg-slate-100 text-slate-900 font-extrabold text-base shadow-lg transition duration-200 flex items-center gap-2 cursor-pointer group"
               >
-                <span>Start Health Quiz Now</span>
+                <span>{isHindi ? 'स्वास्थ्य क्विज़ शुरू करें' : 'Start Health Quiz Now'}</span>
                 <ArrowRight className="w-5 h-5 text-brand-700 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 to="/explore"
                 className="px-6 py-4 rounded-xl bg-brand-800/80 hover:bg-brand-900 text-white font-bold text-base border border-white/20 transition cursor-pointer"
               >
-                Review Topics First
+                {isHindi ? 'पहले विषयों की समीक्षा करें' : 'Review Topics First'}
               </Link>
             </div>
           </div>

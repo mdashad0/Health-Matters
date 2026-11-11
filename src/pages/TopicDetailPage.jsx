@@ -17,17 +17,23 @@ import {
   ChevronRight,
   Info,
   Layers,
-  ArrowRight
+  ArrowRight,
+  ShieldCheck,
+  Utensils
 } from 'lucide-react';
 import { topicsData } from '../data/topicsData';
+import { useLanguage } from '../context/LanguageContext';
 import BpCalculator from '../components/BpCalculator';
 import HydrationCalculator from '../components/HydrationCalculator';
 import MedicalDisclaimer from '../components/MedicalDisclaimer';
+import DiseasePreventionCare from '../components/DiseasePreventionCare';
+import DiabetesPlateChart from '../components/DiabetesPlateChart';
 
 export default function TopicDetailPage() {
   const { topicId } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
+  const { isHindi, t } = useLanguage();
 
   // Find topic
   const topic = topicsData.find(t => t.id === topicId) || topicsData[0];
@@ -80,7 +86,7 @@ export default function TopicDetailPage() {
             className="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-brand-600 transition group cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            <span>Back to Explore Topics</span>
+            <span>{isHindi ? 'विषय सूची पर वापस जाएं' : 'Back to Explore Topics'}</span>
           </Link>
 
           <div className="flex items-center gap-3">
@@ -89,7 +95,7 @@ export default function TopicDetailPage() {
               className="text-xs font-semibold px-3 py-1.5 rounded-lg border border-slate-200 hover:bg-slate-50 text-slate-600 flex items-center gap-1.5 transition cursor-pointer"
             >
               <Share2 className="w-3.5 h-3.5" />
-              <span>{copied ? 'Link Copied!' : 'Share Guide'}</span>
+              <span>{copied ? (isHindi ? 'लिंक कॉपी हो गया!' : 'Link Copied!') : (isHindi ? 'गाइड साझा करें' : 'Share Guide')}</span>
             </button>
           </div>
         </div>
@@ -101,11 +107,11 @@ export default function TopicDetailPage() {
           <div className="relative z-10 max-w-3xl space-y-4">
             <div className="flex flex-wrap items-center gap-3">
               <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm">
-                {topic.category}
+                {isHindi && topic.categoryHi ? topic.categoryHi : topic.category}
               </span>
               <span className="text-xs text-white/80 font-medium flex items-center gap-1">
                 <Clock className="w-3.5 h-3.5" />
-                {topic.readTime}
+                {isHindi && topic.readTimeHi ? topic.readTimeHi : topic.readTime}
               </span>
             </div>
 
@@ -115,16 +121,16 @@ export default function TopicDetailPage() {
               </div>
               <div>
                 <h1 className="text-3xl sm:text-5xl font-black tracking-tight">
-                  {topic.title}
+                  {isHindi && topic.titleHi ? topic.titleHi : topic.title}
                 </h1>
                 <p className="text-base sm:text-lg text-white/90 font-medium mt-1">
-                  {topic.subtitle}
+                  {isHindi && topic.subtitleHi ? topic.subtitleHi : topic.subtitle}
                 </p>
               </div>
             </div>
 
             <p className="text-sm sm:text-base text-white/95 leading-relaxed pt-2">
-              {topic.heroDescription}
+              {isHindi && topic.heroDescriptionHi ? topic.heroDescriptionHi : topic.heroDescription}
             </p>
           </div>
 
@@ -133,12 +139,27 @@ export default function TopicDetailPage() {
         </div>
       </section>
 
-      {/* 3. IMPORTANT FACTS STATS BAR */}
+      {/* 3. DEDICATED PREVENTION AND HOME-CARE SECTION */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" id="prevention-care">
+        <DiseasePreventionCare 
+          topicId={topic.id} 
+          activeSubtopicId={activeSubtopicTab} 
+        />
+      </section>
+
+      {/* 4. DIABETES DIET CHART & 50-25-25 PLATE METHOD (If topic is Diabetes) */}
+      {topic.id === 'diabetes' && (
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" id="diet-chart">
+          <DiabetesPlateChart />
+        </section>
+      )}
+
+      {/* 5. IMPORTANT CLINICAL FACTS STATS BAR */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white rounded-3xl border border-slate-200 shadow-card p-6 sm:p-8">
           <h2 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-6 flex items-center gap-2">
             <Info className="w-4 h-4 text-brand-600" />
-            Key Clinical Facts & Statistics
+            {isHindi ? 'प्रमुख नैदानिक तथ्य और सांख्यिकी' : 'Key Clinical Facts & Statistics'}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {topic.importantFacts.map((fact, idx) => (
@@ -156,7 +177,7 @@ export default function TopicDetailPage() {
         </div>
       </section>
 
-      {/* 4. SIMPLE EXPLANATION ANALOGY */}
+      {/* 6. SIMPLE EXPLANATION ANALOGY */}
       {topic.simpleExplanation && (
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gradient-to-r from-blue-50/70 via-teal-50/50 to-blue-50/70 rounded-3xl border border-teal-200/70 p-6 sm:p-8">
@@ -164,7 +185,9 @@ export default function TopicDetailPage() {
               💡 {topic.simpleExplanation.title}
             </h3>
             <p className="text-sm text-slate-700 leading-relaxed mb-4">
-              We translate medical concepts into plain English so you can understand what happens inside your body.
+              {isHindi 
+                ? 'हम चिकित्सा अवधारणाओं को सरल भाषा में समझाते हैं ताकि आप अपने शरीर में होने वाली प्रक्रियाओं को आसानी से समझ सकें।'
+                : 'We translate medical concepts into plain English so you can understand what happens inside your body.'}
             </p>
 
             {/* If Blood Pressure systolic / diastolic */}
@@ -235,14 +258,14 @@ export default function TopicDetailPage() {
         </section>
       )}
 
-      {/* 5. SUBTOPIC DETAIL TABS SECTION */}
+      {/* 7. SUBTOPIC DETAIL TABS SECTION */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white rounded-3xl border border-slate-200 shadow-card overflow-hidden">
           {/* Subtopic Tab Navigation Bar */}
           <div className="border-b border-slate-200 bg-slate-50/70 p-4 sm:p-6">
             <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-2">
               <Layers className="w-4 h-4 text-brand-600" />
-              Detailed Subtopic Breakdown
+              {isHindi ? 'विस्तृत उप-विषय विवरण' : 'Detailed Subtopic Breakdown'}
             </h3>
             <div className="flex flex-wrap gap-2">
               {topic.subtopics.map(sub => (
@@ -255,7 +278,7 @@ export default function TopicDetailPage() {
                       : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
                   }`}
                 >
-                  <span>{sub.name}</span>
+                  <span>{isHindi && sub.nameHi ? sub.nameHi : sub.name}</span>
                 </button>
               ))}
             </div>
@@ -266,16 +289,18 @@ export default function TopicDetailPage() {
             {/* Header / Definition */}
             <div className="border-b border-slate-100 pb-6">
               <div className="inline-block px-3 py-1 rounded-full text-xs font-bold bg-brand-50 text-brand-700 border border-brand-200 mb-2">
-                Subtopic Guide
+                {isHindi ? 'उप-विषय गाइड' : 'Subtopic Guide'}
               </div>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
-                {currentSubtopic.name}
+                {isHindi && currentSubtopic.nameHi ? currentSubtopic.nameHi : currentSubtopic.name}
               </h2>
               <p className="text-sm font-semibold text-brand-700 mt-1 mb-4">
                 {currentSubtopic.tagline}
               </p>
               <div className="bg-slate-50 rounded-2xl p-5 border border-slate-200/80 text-sm sm:text-base text-slate-700 leading-relaxed">
-                <strong className="text-slate-900 block mb-1">Definition:</strong>
+                <strong className="text-slate-900 block mb-1">
+                  {isHindi ? 'परिभाषा:' : 'Definition:'}
+                </strong>
                 {currentSubtopic.definition}
               </div>
             </div>
@@ -283,7 +308,9 @@ export default function TopicDetailPage() {
             {/* Stages if any (e.g. for Dehydration) */}
             {currentSubtopic.stages && currentSubtopic.stages.length > 0 && (
               <div className="space-y-4">
-                <h4 className="text-lg font-bold text-slate-900">Severity Progression & Warning Signs</h4>
+                <h4 className="text-lg font-bold text-slate-900">
+                  {isHindi ? 'गंभीरता के अनुसार लक्षण व चेतावनी संकेत' : 'Severity Progression & Warning Signs'}
+                </h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {currentSubtopic.stages.map((stg, sIdx) => (
                     <div key={sIdx} className="bg-slate-50 rounded-2xl p-5 border border-slate-200">
@@ -316,7 +343,7 @@ export default function TopicDetailPage() {
                 <div className="bg-slate-50/60 rounded-2xl p-6 border border-slate-200 space-y-4">
                   <div className="flex items-center gap-2 text-rose-700 font-bold text-base">
                     <AlertTriangle className="w-5 h-5" />
-                    <h4>Causes & Contributing Factors</h4>
+                    <h4>{isHindi ? 'कारण और योगदानकर्ता कारक' : 'Causes & Contributing Factors'}</h4>
                   </div>
                   <ul className="space-y-2.5">
                     {currentSubtopic.causes.map((cause, cIdx) => (
@@ -334,7 +361,7 @@ export default function TopicDetailPage() {
                 <div className="bg-slate-50/60 rounded-2xl p-6 border border-slate-200 space-y-4">
                   <div className="flex items-center gap-2 text-amber-700 font-bold text-base">
                     <Activity className="w-5 h-5" />
-                    <h4>Common Symptoms & Warning Signs</h4>
+                    <h4>{isHindi ? 'सामान्य लक्षण व चेतावनी संकेत' : 'Common Symptoms & Warning Signs'}</h4>
                   </div>
                   <ul className="space-y-2.5">
                     {currentSubtopic.symptoms.map((symptom, sIdx) => (
@@ -353,7 +380,7 @@ export default function TopicDetailPage() {
               <div className="bg-white rounded-2xl p-6 border border-slate-200 space-y-3">
                 <h4 className="text-base font-bold text-slate-900 flex items-center gap-2">
                   <Shield className="w-5 h-5 text-brand-600" />
-                  Key Risk Factors & Susceptibility
+                  {isHindi ? 'प्रमुख जोखिम कारक' : 'Key Risk Factors & Susceptibility'}
                 </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
                   {currentSubtopic.riskFactors.map((risk, rIdx) => (
@@ -366,14 +393,14 @@ export default function TopicDetailPage() {
               </div>
             )}
 
-            {/* Prevention & Management */}
+            {/* Prevention & Management Summary Bullets */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Prevention */}
               {currentSubtopic.prevention && currentSubtopic.prevention.length > 0 && (
                 <div className="bg-emerald-50/50 rounded-2xl p-6 border border-emerald-200/80 space-y-4">
                   <div className="flex items-center gap-2 text-emerald-800 font-bold text-base">
                     <CheckCircle className="w-5 h-5 text-emerald-600" />
-                    <h4>Evidence-Based Prevention</h4>
+                    <h4>{isHindi ? 'रोकथाम और जोखिम में कमी' : 'Prevention and Risk Reduction'}</h4>
                   </div>
                   <ul className="space-y-2.5">
                     {currentSubtopic.prevention.map((prev, pIdx) => (
@@ -383,6 +410,11 @@ export default function TopicDetailPage() {
                       </li>
                     ))}
                   </ul>
+                  {currentSubtopic.preventionNote && (
+                    <p className="text-xs text-emerald-900 bg-white/80 p-2.5 rounded-xl border border-emerald-200 italic mt-2">
+                      {currentSubtopic.preventionNote}
+                    </p>
+                  )}
                 </div>
               )}
 
@@ -391,7 +423,7 @@ export default function TopicDetailPage() {
                 <div className="bg-teal-50/50 rounded-2xl p-6 border border-teal-200/80 space-y-4">
                   <div className="flex items-center gap-2 text-teal-800 font-bold text-base">
                     <Heart className="w-5 h-5 text-teal-600" />
-                    <h4>Clinical Management & Treatment</h4>
+                    <h4>{isHindi ? 'घरेलू देखभाल और प्रबंधन' : 'Home Care and Management'}</h4>
                   </div>
                   <ul className="space-y-2.5">
                     {currentSubtopic.management.map((mgmt, mIdx) => (
@@ -401,6 +433,11 @@ export default function TopicDetailPage() {
                       </li>
                     ))}
                   </ul>
+                  {currentSubtopic.warning && (
+                    <p className="text-xs text-rose-900 bg-rose-50 p-2.5 rounded-xl border border-rose-200 font-semibold mt-2">
+                      ⚠️ {currentSubtopic.warning}
+                    </p>
+                  )}
                 </div>
               )}
             </div>
@@ -408,16 +445,20 @@ export default function TopicDetailPage() {
         </div>
       </section>
 
-      {/* 6. INTERACTIVE TOOL & CHARTS FOR THIS TOPIC */}
+      {/* 8. INTERACTIVE CLINICAL TOOLS & CHARTS FOR THIS TOPIC */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {topic.id === 'blood-pressure' && (
           <div className="space-y-6">
-            <h3 className="text-xl font-bold text-slate-900">Interactive Blood Pressure Tools</h3>
+            <h3 className="text-xl font-bold text-slate-900">
+              {isHindi ? 'इंटरैक्टिव रक्तचाप उपकरण' : 'Interactive Blood Pressure Tools'}
+            </h3>
             <BpCalculator />
 
             {/* AHA Blood Pressure Classification Chart */}
             <div className="bg-white rounded-2xl border border-slate-200 p-6 overflow-x-auto shadow-card">
-              <h4 className="text-base font-bold text-slate-800 mb-4">Official Clinical Blood Pressure Ranges (AHA)</h4>
+              <h4 className="text-base font-bold text-slate-800 mb-4">
+                {isHindi ? 'आधिकारिक रक्तचाप श्रेणियां (AHA)' : 'Official Clinical Blood Pressure Ranges (AHA)'}
+              </h4>
               <table className="w-full text-left text-sm">
                 <thead>
                   <tr className="border-b border-slate-200 text-slate-500 text-xs uppercase tracking-wider bg-slate-50">
@@ -449,7 +490,9 @@ export default function TopicDetailPage() {
         {topic.id === 'diabetes' && (
           <div className="space-y-6">
             <div className="bg-white rounded-2xl border border-slate-200 p-6 overflow-x-auto shadow-card">
-              <h4 className="text-base font-bold text-slate-800 mb-2">Blood Sugar Level Targets (ADA Guidelines)</h4>
+              <h4 className="text-base font-bold text-slate-800 mb-2">
+                {isHindi ? 'रक्त शर्करा स्तर लक्ष्य (ADA दिशानिर्देश)' : 'Blood Sugar Level Targets (ADA Guidelines)'}
+              </h4>
               <p className="text-xs text-slate-500 mb-4">Standard diagnostic ranges for fasting plasma glucose, 2-hour post-meal glucose, and HbA1c.</p>
               <table className="w-full text-left text-sm">
                 <thead>
@@ -483,12 +526,16 @@ export default function TopicDetailPage() {
 
         {topic.id === 'dehydration' && (
           <div className="space-y-6">
-            <h3 className="text-xl font-bold text-slate-900">Hydration Assessment Tools</h3>
+            <h3 className="text-xl font-bold text-slate-900">
+              {isHindi ? 'जलयोजन मूल्यांकन उपकरण' : 'Hydration Assessment Tools'}
+            </h3>
             <HydrationCalculator />
 
             {/* Urine Hydration Color Chart */}
             <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-card">
-              <h4 className="text-base font-bold text-slate-800 mb-1">Visual Hydration Color Chart</h4>
+              <h4 className="text-base font-bold text-slate-800 mb-1">
+                {isHindi ? 'दृश्य जलयोजन रंग चार्ट' : 'Visual Hydration Color Chart'}
+              </h4>
               <p className="text-xs text-slate-500 mb-4">Compare your urine color to gauge cellular hydration and kidney filtration efficiency.</p>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -508,23 +555,25 @@ export default function TopicDetailPage() {
         )}
       </section>
 
-      {/* 7. MEDICAL DISCLAIMER NOTICE */}
+      {/* 9. MEDICAL DISCLAIMER NOTICE */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <MedicalDisclaimer variant="banner" />
       </div>
 
-      {/* 8. BOTTOM CALL-TO-ACTION */}
+      {/* 10. BOTTOM CALL-TO-ACTION */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="rounded-3xl bg-gradient-to-r from-brand-700 via-teal-700 to-brand-800 text-white p-8 sm:p-12 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-2 max-w-xl">
             <span className="text-xs font-bold uppercase tracking-wider text-teal-200 bg-white/10 px-3 py-1 rounded-full">
-              Ready for the Next Step?
+              {isHindi ? 'अगला कदम उठाने के लिए तैयार?' : 'Ready for the Next Step?'}
             </span>
             <h3 className="text-2xl sm:text-4xl font-extrabold tracking-tight">
-              Read. Interact. Learn. Test Your Knowledge.
+              {isHindi ? 'पढ़ें। समझें। सीखें। अपना ज्ञान परखें।' : 'Read. Interact. Learn. Test Your Knowledge.'}
             </h3>
             <p className="text-sm text-teal-50 leading-relaxed">
-              You've read about {topic.title}. Now test your knowledge with interactive quiz questions and Myth vs. Fact challenges to solidify your understanding.
+              {isHindi 
+                ? `आपने ${topic.titleHi || topic.title} के बारे में पढ़ा। अब इंटरैक्टिव क्विज़ के साथ अपने ज्ञान का परीक्षण करें।`
+                : `You've read about ${topic.title}. Now test your knowledge with interactive quiz questions and Myth vs. Fact challenges to solidify your understanding.`}
             </p>
           </div>
 
@@ -534,7 +583,7 @@ export default function TopicDetailPage() {
               className="px-6 py-3.5 rounded-xl bg-white text-slate-900 hover:bg-slate-100 font-extrabold text-sm shadow-md transition flex items-center gap-2 cursor-pointer"
             >
               <HelpCircle className="w-4 h-4 text-teal-700" />
-              <span>Test Knowledge on {topic.title}</span>
+              <span>{isHindi ? 'क्विज़ प्रारंभ करें' : `Test Knowledge on ${topic.title}`}</span>
             </Link>
           </div>
         </div>
