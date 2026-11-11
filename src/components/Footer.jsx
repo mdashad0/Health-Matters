@@ -193,7 +193,7 @@ export default function Footer() {
           </div>
           <div className="flex items-center gap-4 text-slate-400">
             <span>•</span>
-            <span className="text-teal-400">{isHindi ? 'साक्ष्य-आधारित स्वास्थ्य शिक्षा' : 'Evidence-Based Education'}</span>
+            <span className="text-teal-400">{isHindi ? 'साक्ष्य-आधारित स्वास्थ्य शिक्षा' : 'Evidence-Based Education : Rutuparna Barik'}</span>
           </div>
         </div>
       </div>
